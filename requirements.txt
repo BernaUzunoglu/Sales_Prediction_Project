@@ -1,0 +1,13 @@
+python-dotenv
+sqlalchemy
+psycopg2
+pandas
+numpy
+scikit-learn
+xgboost
+uvicorn
+requests
+pydantic
+matplotlib
+joblib
+fastapi
