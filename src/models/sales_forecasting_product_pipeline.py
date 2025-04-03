@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
 # create_features fonksiyonunu modülden al
-from models.feature_engineering import create_features
+from src.models.feature_engineering import create_features
 
 # CSV yolunu tanımla
 file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_forecasting_data.csv"

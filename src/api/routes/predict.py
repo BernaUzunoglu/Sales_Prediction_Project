@@ -44,4 +44,4 @@ def predict(request: PredictionRequest):
             "predicted_quantity": prediction
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Tahmin yapılamadı: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Prediction could not be made: {str(e)}")

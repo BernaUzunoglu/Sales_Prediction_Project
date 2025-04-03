@@ -6,3 +6,4 @@
  * Customers - Orders: One-to-Many (Bir müşteri birden çok sipariş verebilir)
 
  * Categories - Products: One-to-Many (Bir kategoride birden çok ürün olabilir)
+
