@@ -62,6 +62,6 @@ df = df.merge(product_features, on="product_id", how="left")
 
 print(df.head(10))
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_data1.csv", index=False)
+df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/sales_data1.csv", index=False)
 
 

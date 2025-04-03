@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 
 # Load the sales data
-file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_forecasting_data.csv"
+file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/sales_forecasting_data.csv"
 # csv dosyasını okurken date kolonunu datetime parse ederek ekleyelim.
 df = pd.read_csv(file_path, parse_dates=['order_date'])
 
@@ -93,9 +93,10 @@ train_rmse_xgb = np.sqrt(mean_squared_error(y_train, train_pred_xgb))
 print(f'XGBoost Train RMSE: {train_rmse_xgb}')
 
 # XGBoost Cross-Validation RMSE
-cv_scores_xgb = cross_val_score(xgb_model, X, y, cv=5, scoring='neg_mean_squared_error')
-cv_rmse_xgb = np.sqrt(-cv_scores_xgb)
-print(f'XGBoost Cross-Validation RMSE: {cv_rmse_xgb.mean()}')
+# cv_scores_xgb = cross_val_score(xgb_model, X, y, cv=5, scoring='neg_mean_squared_error')
+# cv_rmse_xgb = np.sqrt(-cv_scores_xgb)
+# print(f'XGBoost Cross-Validation RMSE: {cv_rmse_xgb.mean()}')
+
 
 # Linear Regression Train RMSE
 train_pred_lr = lr_model.predict(X_train)

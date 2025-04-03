@@ -27,7 +27,7 @@ def load_merged_data():
 # Kullanım
 df = load_merged_data()
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/category_revenue.csv", index=False)
+df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/category_revenue.csv", index=False)
 
 
 
