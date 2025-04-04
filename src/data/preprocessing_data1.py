@@ -1,6 +1,7 @@
 import pandas as pd
 from sqlalchemy import text
 from database import engine  # engine'i direkt import ediyoruz
+from config import Config
 import warnings
 
 pd.set_option('display.max_columns', None)
@@ -62,6 +63,6 @@ df = df.merge(product_features, on="product_id", how="left")
 
 print(df.head(10))
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/sales_data1.csv", index=False)
+df.to_csv(f"{Config.PROJECT_ROOT}src/data/processed/sales_data1.csv", index=False)
 
 

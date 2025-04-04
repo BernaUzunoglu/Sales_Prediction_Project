@@ -2,6 +2,7 @@ import pandas as pd
 from sqlalchemy import text
 from database import engine  # engine'i direkt import ediyoruz
 import warnings
+from config import Config
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 300)
@@ -21,13 +22,13 @@ def load_merged_data():
     ORDER BY TotalRevenue DESC
     """
     with engine.connect() as conn:
-        df = pd.read_sql(text(query), conn)
-    return df
+        data = pd.read_sql(text(query), conn)
+    return data
 
 # Kullanım
 df = load_merged_data()
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/category_revenue.csv", index=False)
+df.to_csv(f"{Config.PROJECT_ROOT}src/data/processed/category_revenue.csv", index=False)
 
 
 

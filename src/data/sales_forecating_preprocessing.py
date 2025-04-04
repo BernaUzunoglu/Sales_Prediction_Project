@@ -1,6 +1,7 @@
 import pandas as pd
 from sqlalchemy import text
 from data.database import engine  # engine'i direkt import ediyoruz
+from config import Config
 
 
 def load_merged_data():
@@ -27,5 +28,5 @@ ORDER BY
 # Kullanım
 df = load_merged_data()
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/sales_forecasting_data.csv", index=False)
+df.to_csv(f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv", index=False)
 

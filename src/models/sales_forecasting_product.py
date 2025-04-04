@@ -6,12 +6,12 @@ from xgboost import XGBRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
+from config import Config
 import joblib
 import os
 
 # Load the sales data
-file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_forecasting_data.csv"
+file_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
 df = pd.read_csv(file_path, parse_dates=['order_date'])
 
 # Aggregate data by order_date and product_id to get daily total quantity
@@ -79,5 +79,5 @@ predictions_df = pd.DataFrame({
     'actual_quantity': y_test.values,
     'predicted_quantity': predictions
 })
-predictions_df.to_csv('model_resılts/ml_sales_forecast_results.csv', index=False)
+predictions_df.to_csv('model_results/ml_sales_forecast_results.csv', index=False)
 print('Prediction results saved to ml_sales_forecast_results.csv')

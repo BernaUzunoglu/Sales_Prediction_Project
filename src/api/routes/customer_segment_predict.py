@@ -1,13 +1,14 @@
 from fastapi import APIRouter, HTTPException
 from api.models.customer_segment_request_model import CustomerSegmentRequest
 from api.utils.model_loader import load_model
+from config import Config
 import pandas as pd
 
 # Router
 router = APIRouter()
 
 # Model dosyasını yükle
-pipeline_path = "C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/models/saved_models/customer_segmentation_pipeline.pkl"
+pipeline_path = f"{Config.PROJECT_ROOT}src/models/saved_models/customer_segmentation_pipeline.pkl"
 pipeline = load_model(pipeline_path)
 
 @router.post("/predict-segment", tags=["Segmentation"])

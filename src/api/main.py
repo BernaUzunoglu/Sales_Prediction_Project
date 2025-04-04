@@ -1,5 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from api.routes import predict, retrain, health, products, sales_summary, customer_segment_predict
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+from api.utils.errors import ERRORS
 
 # FastAPI Başlatma Noktası
 # routes/ içindeki tüm endpoint’leri burada dahil ediyoruz.
@@ -9,7 +12,25 @@ app = FastAPI(
     description="A FastAPI project for predicting sales using trained models.",
     version="1.0.0"
 )
+# 🚨 Tip hataları için özel yakalayıcı
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    custom_errors = []
+    for error in exc.errors():
+        custom_errors.append({
+            "field": error.get("loc")[-1],
+            "message": error.get("msg"),
+            "type": error.get("type")
+        })
 
+    return JSONResponse(
+        status_code=422,
+        content={
+            "error_code": 1004,
+            "error_message": ERRORS.get(1004, "Geçersiz veri formatı."),
+            "details": custom_errors
+        }
+    )
 # Endpoint'leri ekliyoruz
 app.include_router(health.router, prefix="/health", tags=["Health Check"])
 app.include_router(predict.router, prefix="/predict", tags=["Prediction"])

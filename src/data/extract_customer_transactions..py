@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import text
-# from database import engine  # engine'i direkt import ediyoruz
 from data.database import engine
+from config import Config
 
 def load_merged_data():
     query = """
@@ -28,6 +28,6 @@ JOIN order_details od ON o.order_id = od.order_id
 # Kullanım
 df = load_merged_data()
 
-df.to_csv("C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/customer_data.csv", index=False)
+df.to_csv(f"{Config.PROJECT_ROOT}src/data/processed/customer_data.csv", index=False)
 
 

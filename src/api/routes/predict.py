@@ -2,15 +2,21 @@ from fastapi import APIRouter, HTTPException
 from api.models.request_model import PredictionRequest
 from api.utils.model_loader import load_model
 from models.feature_engineering import create_features
-
-
 import pandas as pd
+import json
+from api.utils.errors import ERRORS
+from config import Config
+
+# Eğitimde kullanılan ürün ID’lerini yükle
+with open(f"{Config.PROJECT_ROOT}src/models/model_results/trained_product_ids.json", "r") as f:
+    valid_product_ids = json.load(f)
 
 router = APIRouter()
 
 # Model ve geçmiş verilerin yolu
-model_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/models/saved_models/sales_pipeline_model.pkl"
-data_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_forecasting_data.csv"
+model_path = "C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/models/saved_models/sales_pipeline_model.pkl"
+# model_path = f"{Config.PROJECT_ROOT}src/models/saved_models/sales_pipeline_model.pkl"
+data_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
 
 # Modeli ve geçmiş veriyi yükle
 model = load_model(model_path)
@@ -22,6 +28,13 @@ def predict(request: PredictionRequest):
     print("🎯 Tahmin endpoint'ine GİRİLDİ")
 
     try:
+        # ✔️ Ürün ID geçerli mi kontrol et
+        if request.product_id not in valid_product_ids:
+            raise HTTPException(
+                status_code=400,
+                detail={"error_code": 1001, "error_message": ERRORS[1001]}
+            )
+
         input_df = pd.DataFrame([{
             "product_id": request.product_id,
             "year": request.year,
@@ -43,5 +56,10 @@ def predict(request: PredictionRequest):
             "product_id": request.product_id,
             "predicted_quantity": prediction
         }
+    except HTTPException as he:
+        raise he  # zaten özel hata dönüyorsa
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction could not be made: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail={"error_code": 9999, "error_message": f"Prediction failed: {str(e)}"}
+        )

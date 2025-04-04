@@ -7,9 +7,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+from config import Config
 
 # Load the sales data
-file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/data/processed/sales_forecasting_data.csv"
+file_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
 # csv dosyasını okurken date kolonunu datetime parse ederek ekleyelim.
 df = pd.read_csv(file_path, parse_dates=['order_date'])
 

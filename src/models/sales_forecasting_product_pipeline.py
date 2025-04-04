@@ -2,14 +2,16 @@ import pandas as pd
 import numpy as np
 import os
 import joblib
+import json
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
+from config import Config
 # create_features fonksiyonunu modülden al
-from src.models.feature_engineering import create_features
+from models.feature_engineering import create_features
 
 # CSV yolunu tanımla
-file_path = "C:/Users/BERNA/OneDrive/Masaüstü/Turkcell/ML_Based_Sales_Prediction_API_Project/src/data/processed/sales_forecasting_data.csv"
+file_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
 
 
 # Veri setini oku
@@ -26,6 +28,12 @@ ts_data['order_date'] = pd.to_datetime(ts_data['order_date'])
 ts_data['year'] = ts_data['order_date'].dt.year
 ts_data['month'] = ts_data['order_date'].dt.month
 ts_data['day'] = ts_data['order_date'].dt.day
+
+trained_product_ids = ts_data['product_id'].unique().tolist()
+
+# Kaydet
+with open(f"{Config.PROJECT_ROOT}src/models/model_results/trained_product_ids.json", "w") as f:
+    json.dump(trained_product_ids, f)
 
 # Sadece kullanıcıdan alınabilecek sütunlar: (model bu inputla çalışacak)
 X_raw = ts_data[['product_id', 'year', 'month', 'day']].copy()

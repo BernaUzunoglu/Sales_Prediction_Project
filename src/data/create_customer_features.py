@@ -1,8 +1,9 @@
 import pandas as pd
 from datetime import timedelta
+from config import Config
 
 # 1. CSV'den veriyi oku
-file_path = "src/data/processed/customer_data.csv"
+file_path = f"{Config.PROJECT_ROOT}src/data/processed/customer_data.csv"
 df = pd.read_csv(file_path, parse_dates=["order_date"])
 
 # 2. Referans tarih: verideki en son sipariş tarihi + 1 gün
@@ -26,6 +27,6 @@ customer_features["recency"] = (reference_date - customer_features["last_order_d
 customer_features.drop(columns=["last_order_date"], inplace=True)
 
 # 6. Dosyaya yaz (isteğe bağlı)
-output_path = "src/data/processed/customer_features.csv"
+output_path = f"{Config.PROJECT_ROOT}src/data/processed/customer_features.csv"
 customer_features.to_csv(output_path, index=False)
 print(f"✅ Özellikler başarıyla kaydedildi: {output_path}")
