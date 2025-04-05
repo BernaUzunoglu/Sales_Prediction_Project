@@ -40,26 +40,7 @@ Ek olarak:
 
 ---
 
-## 🔄 3. Veri Akışı – Tahmin Süreci
-
-```mermaid
-flowchart TD
-    A[API: POST /predict] --> B[Feature Engineering]
-    B --> C["Model Pipeline (LinearRegression)"]
-    C --> D["Satış Tahmini: predicted_quantity"]
-    D --> E[API Response]
-```
-```mermaid   
-flowchart TD
-    A[API: POST /predict-segment] --> B[Customer Feature Extraction]
-    B --> C["Segmentasyon Modeli (KMeans/KNN)"]
-    C --> D["Segment Tahmini: segment_id & segment_name"]
-    D --> E[API Response]
-```
-
----
-
-## 🤖 4. ML Modelleri
+## 🤖 3. ML Modelleri
 
 ### Satış Tahmin Modeli
 - Tip: Regresyon (LinearRegression)
@@ -68,15 +49,32 @@ flowchart TD
   - Zaman serisi türevleri: lag_1-14, moving_avg_7, cumulative_sales vs.
 - Çıktı: `predicted_quantity`
 
+### 🔄 Veri Akışı – Tahmin Süreci
+```mermaid
+flowchart TD
+    A[API: POST /predict] --> B[Feature Engineering]
+    B --> C["Model Pipeline (LinearRegression)"]
+    C --> D["Satış Tahmini: predicted_quantity"]
+    D --> E[API Response]
+```
+
 ### Müşteri Segmentasyon Modeli
 - Tip: Sınıflandırma (KMeans, KNN)
 - Girdiler:
   - total_spent, num_orders, avg_order_value, num_products, recency
 - Çıktı: `segment_id`, `segment_name`
-
+- 
+### 🔄 Veri Akışı – Tahmin Süreci
+```mermaid   
+flowchart TD
+    A[API: POST /predict-segment] --> B[Customer Feature Extraction]
+    B --> C["Segmentasyon Modeli (KMeans/KNN)"]
+    C --> D["Segment Tahmini: segment_id & segment_name"]
+    D --> E[API Response]
+```
 ---
 
-## 🧪 5. Test Mimarisi
+## 🧪 4. Test Mimarisi
 
 - `tests/test_api.py`: API endpoint doğruluğu
 - `tests/test_models.py`: Model çıktılarının test edilmesi
@@ -84,7 +82,7 @@ flowchart TD
 
 ---
 
-## 🚀 6. Başlatma & Deployment
+## 🚀 5. Başlatma & Deployment
 
 ```bash
 uvicorn api.main:app --reload --app-dir src
