@@ -105,29 +105,51 @@ Amaç, Northwind veritabanındaki sipariş verilerini kullanarak bir makine öğ
 │   └── EDA.ipynb
 ├── src/
 │   ├── __init__.py
-│   ├── api/                              # API ile ilgili tüm kodlar
+│   ├── api/                                 # API ile ilgili tüm kodlar
 │   │   ├── __init__.py
-│   │   ├── main.py                       # Ana FastAPI dosyası (API başlangıç noktası)
-│   │   ├── routes/                       # Endpoint'leri barındıran alt klasör
+│   │   ├── main.py                          # Ana FastAPI dosyası (API başlangıç noktası)
+│   │   ├── routes/                          # Endpoint'leri barındıran alt klasör
 │   │   │   ├── __init__.py
-│   │   │   ├── predict.py                # Tahmin endpoint'i (predict)
-│   │   │   ├── train.py                  # Model eğitimi endpoint'i (opsiyonel)
-│   │   │   └── health.py                 # Sağlık kontrolü endpoint'i (opsiyonel)
-│   │   ├── models/                       # API ile ilişkili Pydantic modelleri
+│   │   │   ├── predict.py                   # Tahmin endpoint'i (predict)
+│   │   │   ├── retrain.py                   # Model eğitimi endpoint'i (opsiyonel)
+│   │   │   ├── health.py                    # Sağlık kontrolü endpoint'i (opsiyonel)
+│   │   │   ├── products.py                  # Ürün listesi dönen endpoint'i
+│   │   │   ├── sales_summary.py             # Ürün bazlı toplam satış özeti dönen endpoit'i
+│   │   │   └── customer_segment_predict.py  # Müşteri segmentasyon endpoint'i
+│   │   ├── models/                                # API ile ilişkili Pydantic modelleri
 │   │   │   ├── __init__.py
-│   │   │   └── request_models.py         # API request modelleri
-│   │   └── utils/                        # Yardımcı fonksiyonlar ve araçlar
+│   │   │   ├── request_models.py                  # API request modelleri
+│   │   │   └── customer_segment_request_model.py  # API Customer Segment modelleri
+│   │   └── utils/                                 # Yardımcı fonksiyonlar ve araçlar
 │   │       ├── __init__.py
-│   │       ├── model_loader.py           # Model yükleme fonksiyonu
+│   │       ├── errors.py                          # Özel hata mesajları
+│   │       └── errors.py                          # Model yükleme fonksiyonu
 │   ├── models/
-│   │   ├──saved_models/     -> Eğitilmiş model dosyaları (.pkl)
-│   │   ├── train_model.py
-│   │   └── predict.py
+│   │   ├── model_reports/     -> Eğitilmiş model raporları (.pkl)
+│   │   │   └── graphics /     -> Eğitilmiş model çıktıları (.png vs.)
+│   │   ├── model_result/      -> Eğitilmiş model dosyaları sonuçları (.csv, .json vs.)
+│   │   ├── saved_models/      -> Eğitilmiş model dosyaları (.pkl)
+│   │   ├── __init__.py
+│   │   ├── customer_segm_kneighborsclass.py
+│   │   ├── customer_segmentation_kmeans.py
+│   │   ├── customer_segmentation_kneighborsclasifier.py
+│   │   ├── feature_engineering.py                  # Özellik mühendisliği
+│   │   ├── sales_forecasting_product.py
+│   │   ├── sales_forecasting_product_id.py
+│   │   └──  sales_forecasting_product_pipeline.py
 │   ├── data/
-│   │   ├── database.py
-│   │   └── preprocessing.py
+│   │   ├── models/                  -> Veritabanındaki tabloların ORM -SQLAlchemy modelleri
+│   │   ├── processed/               -> Veritabanındaki kaydedilen veriler (.csv)
+│   │   ├── __init__.py
+│   │   ├── category_revenue_data_preprocessing.py
+│   │   ├── create_customer_features.py
+│   │   ├── database.py                            # Veritabanı bağlantısı
+│   │   ├── extract_customer_transactions..py
+│   │   ├── preprocessing.py
+│   │   ├── preprocessing_data1.py
+│   │   └── sales_forecating_preprocessing.py
 │   └── config.py           -> Konfigürasyon ayarları
-└── models/                 -> Eğitilmiş eski model dosyaları (.pkl)
+└── legacy_models/          -> Eğitilmiş eski model dosyaları (.pkl)
 
 
 ---
