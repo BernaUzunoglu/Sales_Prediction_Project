@@ -41,7 +41,7 @@ uvicorn api.main:app --reload --app-dir src
 - [API Document](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) → Tüm endpoint açıklamaları, örnek istek/yanıt yapıları, validasyon ve hata mesajları.
 - [Data Dictionary](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md) → Kullanılan tablolar ve  veri setlerindeki kolonlar, veri tipleri, açıklamalar ve modellerdeki feature-target alan tanımlamaları .
 - [Arhitecture](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/ARCHITECTURE.md) → Projenin mimarisi, klasör yapısı, teknoloji yığını, veri akışı ve model mimarisi.
-- [Projec Structure](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md) → Klasör ve dosya yapısının açıklaması (tree formatında).
+- [Project Structure](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md) → Klasör ve dosya yapısının açıklaması (tree formatında).
 - [Project Documentation](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_DOCUMENTATION.md) → Genel proje istek dökümantasyonu ve yapılacaklar listesi.
 
 ---
