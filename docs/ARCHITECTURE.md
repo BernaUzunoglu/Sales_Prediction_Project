@@ -48,7 +48,8 @@ flowchart TD
     B --> C["Model Pipeline (LinearRegression)"]
     C --> D["Satış Tahmini: predicted_quantity"]
     D --> E[API Response]
-    
+```
+```mermaid   
 flowchart TD
     A[API: POST /predict-segment] --> B[Customer Feature Extraction]
     B --> C["Segmentasyon Modeli (KMeans/KNN)"]
