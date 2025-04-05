@@ -114,7 +114,7 @@ Amaç, Northwind veritabanındaki sipariş verilerini kullanarak bir makine öğ
 │   ├── 📁 api/                         → API ile ilgili tüm kodlar  
 │   │   ├── 📄 __init__.py  
 │   │   ├── 🚀 main.py                  → Ana FastAPI dosyası  
-│   │   ├── 📁 routes/                  → API endpoint'leri  
+│   │   ├── 📁 routes/                  → API endpointleri  
 │   │   │   ├── 📄 __init__.py  
 │   │   │   ├── 📄 predict.py                  → Tahmin endpoint’i  
 │   │   │   ├── 📄 retrain.py                  → Model eğitimi endpoint’i (opsiyonel)  
