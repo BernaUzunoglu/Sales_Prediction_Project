@@ -2,21 +2,23 @@ from fastapi import APIRouter, HTTPException
 from api.models.request_model import PredictionRequest
 from api.utils.model_loader import load_model
 from models.feature_engineering import create_features
-import pandas as pd
-import json
 from api.utils.errors import ERRORS
 from config import Config
+import pandas as pd
+import json
+import os
 
 # Eğitimde kullanılan ürün ID’lerini yükle
-with open(f"{Config.PROJECT_ROOT}src/models/model_results/trained_product_ids.json", "r") as f:
+with open(Config.PROJECT_ROOT / "src" / "models" / "model_results" / "trained_product_ids.json", "r") as f:
     valid_product_ids = json.load(f)
 
 router = APIRouter()
 
-# Model ve geçmiş verilerin yolu
-model_path = "C:/Users/BERNA/OneDrive/Masaüstü/Sales_Prediction_Project/src/models/saved_models/sales_pipeline_model.pkl"
-# model_path = f"{Config.PROJECT_ROOT}src/models/saved_models/sales_pipeline_model.pkl"
-data_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
+# model_path = f"{Config.PROJECT_ROOT}/src/models/saved_models/sales_pipeline_model.pkl"
+
+# model_path = Config.PROJECT_ROOT / "src" / "models" / "saved_models" / "sales_pipeline_model.pkl"
+model_path = Config.PROJECT_ROOT / "src/models/saved_models/sales_pipeline_model.pkl"
+data_path = Config.PROJECT_ROOT / "src" / "data" / "processed" / "sales_forecasting_data.csv"
 
 # Modeli ve geçmiş veriyi yükle
 model = load_model(model_path)

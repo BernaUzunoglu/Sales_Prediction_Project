@@ -10,5 +10,5 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 
 # Modeli yükle
 def load_model(model_path: str):
-    model = joblib.load(model_path)
+    model = joblib.load(str(model_path))
     return model

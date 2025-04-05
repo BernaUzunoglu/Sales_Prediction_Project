@@ -8,7 +8,7 @@ import pandas as pd
 router = APIRouter()
 
 # Model dosyasını yükle
-pipeline_path = f"{Config.PROJECT_ROOT}src/models/saved_models/customer_segmentation_pipeline.pkl"
+pipeline_path = Config.PROJECT_ROOT / "src" / "models" / "saved_models" / "customer_segmentation_pipeline.pkl"
 pipeline = load_model(pipeline_path)
 
 @router.post("/predict-segment", tags=["Segmentation"])

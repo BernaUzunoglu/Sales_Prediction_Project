@@ -1,10 +1,13 @@
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()  # .env dosyasını yükle
 
 class Config:
-    PROJECT_ROOT = os.getenv("PROJECT_ROOT", "/default/path")
+    # PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT", "/app/"))
+    # Ortam değişkeninden al, yoksa bu dosyanın 2 üst klasörünü baz al
+    PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT", Path(__file__).resolve().parents[2]))
 
     DB_USER = os.getenv("DB_USER")
     DB_PASSWORD = os.getenv("DB_PASSWORD")
