@@ -1,3 +1,4 @@
+
 # 📈 ML Tabanlı Satış Tahmin API'si
 
 Makine öğrenmesi temelli bu proje, belirli ürünler için gelecekteki satış miktarlarını tahmin etmekte ve müşteri segmentlerini sınıflandırmaktadır. FastAPI kullanılarak geliştirilen bu RESTful API, ürün/satış verileri üzerinde analiz yapma ve tahmin üretme imkânı sunar.
@@ -35,31 +36,30 @@ uvicorn api.main:app --reload --app-dir src
 
 ---
 
-## 📘 API Dokümantasyonu
+## 📚 Proje Dokümantasyonları (docs/ klasörü)
 
-API'nin tüm endpoint'lerine ait detaylı açıklamalar, örnek istek/yanıt yapıları ve hata yönetimi için [API Dokümantasyonu](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) dosyasını inceleyebilirsiniz.
-
----
-
-## 🗂️ Proje Yapısı
-
-📁 Detaylı klasör yapısı için bkz: [Proje Yapısı](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md)
+- [API.DOCS.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) → Tüm endpoint açıklamaları, örnek istek/yanıt yapıları, validasyon ve hata mesajları.
+- [DATA_DICTIONARY.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md) → Kullanılan tablolar ve  veri setlerindeki kolonlar, veri tipleri, açıklamalar ve modellerdeki feature-target alan tanımlamaları .
+- [ARCHITECTURE.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/ARCHITECTURE.md) → Projenin mimarisi, klasör yapısı, teknoloji yığını, veri akışı ve model mimarisi.
+- [PROJECT_STRUCTURE.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md) → Klasör ve dosya yapısının açıklaması (tree formatında).
+- [PROJECT_DOCUMENTATION.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_DOCUMENTATION.md) → Genel proje istek dökümantasyonu ve yapılacaklar listesi.
 
 ---
 
 ## ✨ Özellikler
 
-- 🔮 Satış tahmini (tarih & ürün bazlı)
-- 👥 Müşteri segmentasyonu (harcama, alışveriş alışkanlığına göre)
-- 📦 Ürün listesi & 📈 satış özeti endpoint'leri
-- ✅ Swagger UI ve ReDoc arayüzleri ile görsel test imkânı
+- 🔮 **Satış Tahmini**: Kullanıcıdan alınan `product_id`, `year`, `month`, `day` girdilerine karşılık olarak model, geçmiş verilerden beslenen **zaman serisi özellikleri** ile birlikte satış tahmini üretir. Bu özellikler arasında `lag` değerleri, hareketli ortalamalar (`moving_avg`) ve kümülatif satışlar gibi veriler yer alır. Detaylar için bkz: [Data Dictionary – Feature Engineering](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-sales_forecasting_datacsv).
+
+- 👥 **Müşteri Segmentasyonu**: Müşteri özellikleri (`total_spent`, `num_orders`, `recency` vb.) kullanılarak müşteriler belirli segmentlere atanır (`segment_id`, `segment_name`). Bu işlem, müşteri davranış modellerinin anlaşılmasını sağlar. Kullanılan değişkenler için bkz: [Data Dictionary – Customer Features](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-customer_featurescsv).
+
+- 📦 **Ürün Listesi**: `/products` endpoint’i, sistemde kayıtlı ürünlerin listesini döner. Bu veriler Northwind veritabanındaki `Products` tablosundan elde edilir.
+
+- 📈 **Satış Özeti**: `/sales_summary` endpoint’i, ürün bazlı toplam satış miktarlarını döner. Bu bilgiler, `order_details` üzerinden türetilmiş toplam satışlara dayanmaktadır.
+
+- ✅ **Swagger UI ve ReDoc**: API testlerini hızlı ve görsel şekilde yapabileceğiniz arayüzler sunar.
 
 ---
 
 ## 🛠️ Katkı
 
 Pull request’ler ve issue’lar memnuniyetle karşılanır. Projeye katkıda bulunmak için fork'layabilir, geliştirme yaptıktan sonra gönderebilirsiniz.
-
----
-
-
