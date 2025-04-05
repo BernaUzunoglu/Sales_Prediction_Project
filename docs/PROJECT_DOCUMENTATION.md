@@ -89,7 +89,7 @@ Amaç, Northwind veritabanındaki sipariş verilerini kullanarak bir makine öğ
 
 ---
 ## 📁 Proje Yapısı
-
+```bash
 📁 Sales_Prediction_Project/
 ├── 📄 .env.example                      → Örnek çevre değişkenleri şablonu  
 ├── 📄 .gitignore                       → Git için ignore dosyası  
@@ -160,4 +160,4 @@ Amaç, Northwind veritabanındaki sipariş verilerini kullanarak bir makine öğ
 │   └── 📄 config.py                   → Proje konfigürasyon dosyası  
 
 └── 📁 legacy_models/                  → Eski model dosyaları (.pkl)  
-
+```
