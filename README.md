@@ -38,19 +38,21 @@ uvicorn api.main:app --reload --app-dir src
 
 ## 📚 Proje Dokümantasyonları (docs/ klasörü)
 
-- [API.DOCS.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) → Tüm endpoint açıklamaları, örnek istek/yanıt yapıları, validasyon ve hata mesajları.
-- [DATA_DICTIONARY.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md) → Kullanılan tablolar ve  veri setlerindeki kolonlar, veri tipleri, açıklamalar ve modellerdeki feature-target alan tanımlamaları .
-- [ARCHITECTURE.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/ARCHITECTURE.md) → Projenin mimarisi, klasör yapısı, teknoloji yığını, veri akışı ve model mimarisi.
-- [PROJECT_STRUCTURE.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md) → Klasör ve dosya yapısının açıklaması (tree formatında).
-- [PROJECT_DOCUMENTATION.md](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_DOCUMENTATION.md) → Genel proje istek dökümantasyonu ve yapılacaklar listesi.
+- [API Document](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) → Tüm endpoint açıklamaları, örnek istek/yanıt yapıları, validasyon ve hata mesajları.
+- [Data Dictionary](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md) → Kullanılan tablolar ve  veri setlerindeki kolonlar, veri tipleri, açıklamalar ve modellerdeki feature-target alan tanımlamaları .
+- [Arhitecture](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/ARCHITECTURE.md) → Projenin mimarisi, klasör yapısı, teknoloji yığını, veri akışı ve model mimarisi.
+- [Projec Structure](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md) → Klasör ve dosya yapısının açıklaması (tree formatında).
+- [Project Documentation](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_DOCUMENTATION.md) → Genel proje istek dökümantasyonu ve yapılacaklar listesi.
 
 ---
 
 ## ✨ Özellikler
 
-- 🔮 **Satış Tahmini**: Kullanıcıdan alınan `product_id`, `year`, `month`, `day` girdilerine karşılık olarak model, geçmiş verilerden beslenen **zaman serisi özellikleri** ile birlikte satış tahmini üretir. Bu özellikler arasında `lag` değerleri, hareketli ortalamalar (`moving_avg`) ve kümülatif satışlar gibi veriler yer alır. Detaylar için bkz: [Data Dictionary – Feature Engineering](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-sales_forecasting_datacsv).
+- 🔮 **Satış Tahmini**: Kullanıcıdan alınan `product_id`, `year`, `month`, `day` girdilerine karşılık olarak model, geçmiş verilerden beslenen **zaman serisi özellikleri** ile birlikte satış tahmini üretir. Bu özellikler arasında `lag` değerleri, hareketli ortalamalar (`moving_avg`) ve kümülatif satışlar gibi veriler yer alır. 
+    * Detaylar için bkz: [Data Dictionary – Feature Engineering](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-sales_forecasting_datacsv).
 
-- 👥 **Müşteri Segmentasyonu**: Müşteri özellikleri (`total_spent`, `num_orders`, `recency` vb.) kullanılarak müşteriler belirli segmentlere atanır (`segment_id`, `segment_name`). Bu işlem, müşteri davranış modellerinin anlaşılmasını sağlar. Kullanılan değişkenler için bkz: [Data Dictionary – Customer Features](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-customer_featurescsv).
+- 👥 **Müşteri Segmentasyonu**: Müşteri özellikleri (`total_spent`, `num_orders`, `recency` vb.) kullanılarak müşteriler belirli segmentlere atanır (`segment_id`, `segment_name`). Bu işlem, müşteri davranış modellerinin anlaşılmasını sağlar. 
+    * Kullanılan değişkenler için bkz: [Data Dictionary – Customer Features](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/DATA_DICTIONARY.md#-customer_featurescsv).
 
 - 📦 **Ürün Listesi**: `/products` endpoint’i, sistemde kayıtlı ürünlerin listesini döner. Bu veriler Northwind veritabanındaki `Products` tablosundan elde edilir.
 
