@@ -44,13 +44,8 @@ API'nin tüm endpoint'lerine ait detaylı açıklamalar, örnek istek/yanıt yap
 ## 🗂️ Proje Yapısı
 
 ```bash
-├── src/
-│   └── api/
-│       └── main.py          # FastAPI uygulaması
-├── docs/
-│   └── api_documentation.md # API endpoint dokümantasyonu
-├── requirements.txt         # Gerekli bağımlılıklar
-└── README.md                # Proje tanıtım dosyası
+📁 Detaylı klasör yapısı için bkz: [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)
+ı
 ```
 
 ---
@@ -69,4 +64,5 @@ API'nin tüm endpoint'lerine ait detaylı açıklamalar, örnek istek/yanıt yap
 Pull request’ler ve issue’lar memnuniyetle karşılanır. Projeye katkıda bulunmak için fork'layabilir, geliştirme yaptıktan sonra gönderebilirsiniz.
 
 ---
+
 
