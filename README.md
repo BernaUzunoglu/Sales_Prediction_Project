@@ -37,16 +37,13 @@ uvicorn api.main:app --reload --app-dir src
 
 ## 📘 API Dokümantasyonu
 
-API'nin tüm endpoint'lerine ait detaylı açıklamalar, örnek istek/yanıt yapıları ve hata yönetimi için [API Dokümantasyonu](./docs/api_documentation.md) dosyasını inceleyebilirsiniz.
+API'nin tüm endpoint'lerine ait detaylı açıklamalar, örnek istek/yanıt yapıları ve hata yönetimi için [API Dokümantasyonu](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/API.DOCS.md) dosyasını inceleyebilirsiniz.
 
 ---
 
 ## 🗂️ Proje Yapısı
 
-```bash
-📁 Detaylı klasör yapısı için bkz: [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)
-ı
-```
+📁 Detaylı klasör yapısı için bkz: [Proje Yapısı](https://github.com/BernaUzunoglu/Sales_Prediction_Project/blob/main/docs/PROJECT_STRUCTURE.md)
 
 ---
 
