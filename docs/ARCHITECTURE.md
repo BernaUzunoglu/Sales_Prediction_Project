@@ -7,14 +7,14 @@ Bu doküman, "ML Based Sales Prediction API" projesinin mimari yapısını, katm
 
 ## 🔧 1. Teknoloji Yığını (Tech Stack)
 
-| Katman        | Teknoloji                     |
-|---------------|-------------------------------|
-| Backend       | Python (FastAPI)              |
-| ML Modelleme  | scikit-learn, pandas, joblib  |
-| Veri Tabanı   | SQLite (geliştirme), ORM ile  |
-| Dokümantasyon | Swagger UI, ReDoc             |
-| Test Framework| Pytest                        |
-| Sunucu        | Uvicorn                       |
+| Katman        | Teknoloji                       |
+|---------------|---------------------------------|
+| Backend       | Python (FastAPI)                |
+| ML Modelleme  | scikit-learn, pandas, joblib    |
+| Veri Tabanı   | PosgreSQL (geliştirme), ORM ile |
+| Dokümantasyon | Swagger UI, ReDoc               |
+| Test Framework| Pytest                          |
+| Sunucu        | Uvicorn                         |
 
 ---
 
@@ -45,8 +45,14 @@ Ek olarak:
 ```mermaid
 flowchart TD
     A[API: POST /predict] --> B[Feature Engineering]
-    B --> C[Model Pipeline (LinearRegression)]
-    C --> D[Satış Tahmini: predicted_quantity]
+    B --> C["Model Pipeline (LinearRegression)"]
+    C --> D["Satış Tahmini: predicted_quantity"]
+    D --> E[API Response]
+    
+flowchart TD
+    A[API: POST /predict-segment] --> B[Customer Feature Extraction]
+    B --> C["Segmentasyon Modeli (KMeans/KNN)"]
+    C --> D["Segment Tahmini: segment_id & segment_name"]
     D --> E[API Response]
 ```
 
