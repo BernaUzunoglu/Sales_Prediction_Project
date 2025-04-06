@@ -94,8 +94,10 @@ Bu komut, image'ı bir container olarak başlatır ve localhost:8000 üzerinden 
 
 ### ⚠️ Unutma!
 
-- `.env` ve `.env.docker`dosyalarını  unutma! `.env.example` veya `.env.docker` dosyalarını örneklerindeki gibi oluştur.
-- 
+- `.env` ve `.env.docker`dosyalarını  unutma! 
+- `.env.example` ve `.env.docker.example` dosyalarını örnek alarak bu dosyaları( `.env` , `.env.docker`) oluştur.
+
+
 ---
 
 ## 🛠️ Katkı
