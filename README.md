@@ -60,6 +60,42 @@ uvicorn api.main:app --reload --app-dir src
 
 - ✅ **Swagger UI ve ReDoc**: API testlerini hızlı ve görsel şekilde yapabileceğiniz arayüzler sunar.
 
+
+---
+
+## 🐳 Docker ile Çalıştırma (Alternatif Yöntem)
+
+Bu projeyi Docker ile izole bir ortamda kolayca çalıştırabilirsiniz.
+
+### 1. Docker Image Oluştur
+
+Proje dizininde terminal açarak:
+
+```bash
+docker build -t sales-predict-api .
+```
+Bu komut, Dockerfile'daki talimatlara göre bir image oluşturur.
+
+### 2. Docker Container Başlat
+```bash
+docker run -p 8000:8000 sales-predict-api
+```
+Bu komut, image'ı bir container olarak başlatır ve localhost:8000 üzerinden API'ye erişmenizi sağlar.
+
+- Eğer `Docker Desktop` GUI kullanıyorsan, **"Run" ederken portları manuel olarak ekle**:  
+  - Host port: `8000`  
+  - Container port: `8000`
+
+
+- Tarayıcıda `http://0.0.0.0:8000` çalışmaz, **doğru adres `http://localhost:8000` veya `127.0.0.1:8000`**'dir.
+
+
+---
+
+### ⚠️ Unutma!
+
+- `.env` ve `.env.docker`dosyalarını  unutma! `.env.example` veya `.env.docker` dosyalarını örneklerindeki gibi oluştur.
+- 
 ---
 
 ## 🛠️ Katkı

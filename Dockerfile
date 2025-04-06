@@ -27,6 +27,8 @@ COPY src/models/saved_models /app/src/models/saved_models
 ENV PYTHONPATH=/app/src
 ENV PROJECT_ROOT=/app/
 
+EXPOSE 8000
+
 # Uvicorn ile API başlat
 # CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
