@@ -38,6 +38,7 @@ app.include_router(predict.router, prefix="/predict", tags=["Prediction"])
 app.include_router(products.router, prefix="/product", tags=["Products"])
 app.include_router(sales_summary.router)
 app.include_router(customer_segment_predict.router)
+app.include_router(retrain.router, prefix="/retrain")
 
 print("📡 Aktif ROUTE'lar:")
 for route in app.routes:

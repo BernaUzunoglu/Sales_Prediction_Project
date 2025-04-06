@@ -28,5 +28,5 @@ ORDER BY
 # Kullanım
 df = load_merged_data()
 
-df.to_csv(f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv", index=False)
+df.to_csv(Config.PROJECT_ROOT / "src/data/processed/sales_forecasting_data.csv", index=False)
 

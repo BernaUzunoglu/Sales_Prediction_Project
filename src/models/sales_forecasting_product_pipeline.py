@@ -11,7 +11,7 @@ from config import Config
 from models.feature_engineering import create_features
 
 # CSV yolunu tanımla
-file_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
+file_path = Config.PROJECT_ROOT / "src/data/processed/sales_forecasting_data.csv"
 
 
 # Veri setini oku
@@ -32,7 +32,7 @@ ts_data['day'] = ts_data['order_date'].dt.day
 trained_product_ids = ts_data['product_id'].unique().tolist()
 
 # Kaydet
-with open(f"{Config.PROJECT_ROOT}src/models/model_results/trained_product_ids.json", "w") as f:
+with open(Config.PROJECT_ROOT / "src/models/model_results/trained_product_ids.json", "w") as f:
     json.dump(trained_product_ids, f)
 
 # Sadece kullanıcıdan alınabilecek sütunlar: (model bu inputla çalışacak)

@@ -21,9 +21,13 @@ COPY .env.docker .env
 # 📦 Tüm proje dosyalarını kopyala
 COPY . .
 
+COPY src/models/saved_models /app/src/models/saved_models
+
 # PYTHONPATH ve proje kökü
 ENV PYTHONPATH=/app/src
 ENV PROJECT_ROOT=/app/
 
 # Uvicorn ile API başlat
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from config import Config
 
 # Load the sales data
-file_path = f"{Config.PROJECT_ROOT}src/data/processed/sales_forecasting_data.csv"
+file_path = Config.PROJECT_ROOT / "src/data/processed/sales_forecasting_data.csv"
 # csv dosyasını okurken date kolonunu datetime parse ederek ekleyelim.
 df = pd.read_csv(file_path, parse_dates=['order_date'])
 
