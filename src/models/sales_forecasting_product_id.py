@@ -120,6 +120,7 @@ plt.title(f'Sales Forecast for Product {product_id} - Model Comparison')
 plt.xlabel('Time')
 plt.ylabel('Quantity Sold')
 plt.legend()
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/sales_forcasting_model_result.png")
 plt.show()
 
 
@@ -135,6 +136,7 @@ plt.title('Train vs Test RMSE Comparison')
 plt.ylabel('RMSE')
 plt.xlabel('Model Name')
 plt.legend()
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/sales_forcasting_train_test_rmse.png")
 plt.show()
 
 # Save the predictions to a CSV

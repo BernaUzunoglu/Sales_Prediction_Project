@@ -40,7 +40,9 @@ X_raw = ts_data[['product_id', 'year', 'month', 'day']].copy()
 y = ts_data['quantity'].copy()
 
 pipeline = Pipeline([
-    ("feature_engineering", FunctionTransformer(create_features, kw_args={"ts_data": ts_data}, validate=False)),
+    ("feature_engineering", FunctionTransformer(create_features,
+                                                kw_args={"ts_data": ts_data},
+                                                validate=False)),
     ("model", LinearRegression())
 ])
 

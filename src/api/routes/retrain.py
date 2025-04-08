@@ -71,15 +71,15 @@ def retrain_model(payload: RetrainPayload):
         if rmse_new <= rmse_old:
             joblib.dump(new_model, last_model_path)
             return {
-                "message": "✅ Yeni model başarıyla eğitildi ve kaydedildi.",
-                "rmse_old": rmse_old,
-                "rmse_new": rmse_new
+                "message": "✅ Yeni model başarıyla eğitildi ve kaydedildi."
+                # "rmse_old": rmse_old,
+                # "rmse_new": rmse_new
             }
         else:
             return {
-                "message": "⚠️ Yeni model eski modelden daha kötü. Eski model korunuyor.",
-                "rmse_old": rmse_old,
-                "rmse_new": rmse_new
+                "message": "⚠️ Yeni model eski modelden daha kötü. Eski model korunuyor."
+                # "rmse_old": rmse_old,
+                # "rmse_new": rmse_new
             }
 
     except Exception as e:
