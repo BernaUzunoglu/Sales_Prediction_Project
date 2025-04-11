@@ -12,7 +12,7 @@ from config import Config
 import joblib
 
 # 1. Veri Yükleme
-file_path = f"{Config.PROJECT_ROOT}src/data/processed/customer_features.csv"
+file_path = Config.PROJECT_ROOT / "src/data/processed/customer_features.csv"
 df = pd.read_csv(file_path)
 
 # 2. Sayısal Özellikler
@@ -49,7 +49,7 @@ plt.title("Elbow Method - Optimal K")
 plt.xlabel("K Değeri")
 plt.ylabel("Ortalama Doğruluk")
 plt.grid(True)
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/customer_knn_elbow_plot.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/customer_knn_elbow_plot.png")
 plt.close()
 
 # 5. Veriyi Eğitim ve Test Kümesine Ayırma
@@ -72,7 +72,7 @@ sns.heatmap(cm, annot=True, cmap="Blues", fmt="d")
 plt.xlabel("Tahmin Edilen")
 plt.ylabel("Gerçek")
 plt.title("Confusion Matrix")
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/knn_confusion_matrix.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/knn_confusion_matrix.png")
 plt.close()
 
 # 9. Model Kaydetme
@@ -80,7 +80,7 @@ knn_pipeline = {
     "model": knn,
     "scaler": scaler
 }
-model_path = f"{Config.PROJECT_ROOT}src/models/saved_models/customer_knn_model.pkl"
+model_path = Config.PROJECT_ROOT / "src/models/saved_models/customer_knn_model.pkl"
 joblib.dump(knn_pipeline, model_path)
 print(f"✅ KNN Modeli kaydedildi: {model_path}")
 
@@ -97,6 +97,6 @@ predicted_segment = knn.predict(new_scaled)[0]
 print(f"🎯 Yeni müşteri segmenti: {predicted_segment}")
 
 # 11. Segmentli Veri Kaydetme
-csv_path = f"{Config.PROJECT_ROOT}src/models/model_results/customer_knn_segments.csv"
+csv_path = Config.PROJECT_ROOT / "src/models/model_results/customer_knn_segments.csv"
 df.to_csv(csv_path, index=False)
 print(f"✅ Segmentli veri kaydedildi: {csv_path}")

@@ -8,7 +8,7 @@ from config import Config
 import joblib
 
 # 1. Veri Yükleme
-file_path = f"{Config.PROJECT_ROOT}src/data/processed/customer_features.csv"
+file_path = Config.PROJECT_ROOT / "src/data/processed/customer_features.csv"
 df = pd.read_csv(file_path)
 
 # 2. Sayısal Özellikler
@@ -39,7 +39,7 @@ plt.title("Elbow Method - Optimal K")
 plt.xlabel("Küme Sayısı (k)")
 plt.ylabel("Inertia")
 plt.grid(True)
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/customer_knn_elbow_plot.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/customer_knn_elbow_plot.png")
 plt.close()
 
 # 5. K-Means (k=4 ile)
@@ -68,7 +68,7 @@ for i, col in enumerate(numerical_cols):
     plt.xlabel("Segment")
     plt.ylabel(col)
 plt.tight_layout()
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/segment_features.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/segment_features.png")
 plt.close()
 
 # 9. Segment İsimlendirme
@@ -88,7 +88,7 @@ segment_pipeline = {
 }
 
 # Kaydetme yolu
-model_path = f"{Config.PROJECT_ROOT}src/models/saved_models/customer_segmentation_pipeline.pkl"
+model_path = Config.PROJECT_ROOT / "src/models/saved_models/customer_segmentation_pipeline.pkl"
 joblib.dump(segment_pipeline, model_path)
 
 print(f"✅ Segmentasyon modeli kaydedildi: {model_path}")
@@ -106,6 +106,6 @@ predicted_segment = kmeans.predict(new_scaled)[0]
 print(f"🎯 Yeni müşteri segmenti: {segment_map[predicted_segment]}")
 
 # 11. Segmentli veri kaydet
-csv_path = f"{Config.PROJECT_ROOT}src/models/model_results/customer_segments.csv"
+csv_path = Config.PROJECT_ROOT / "src/models/model_results/customer_segments.csv"
 df.to_csv(csv_path, index=False)
 print(f"✅ Segmentli veri kaydedildi: {csv_path}")

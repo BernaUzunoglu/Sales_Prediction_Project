@@ -10,7 +10,7 @@ from config import Config
 import joblib
 
 # 1. Veri Yükleme
-file_path = f"{Config.PROJECT_ROOT}src/data/processed/customer_features.csv"
+file_path = Config.PROJECT_ROOT / "src/data/processed/customer_features.csv"
 df = pd.read_csv(file_path)
 
 # 2. Sayısal Özellikler
@@ -44,7 +44,7 @@ plt.title("Elbow Method for K (KNN vs Segment)")
 plt.xlabel("K (n_neighbors)")
 plt.ylabel("Cross-Validated Accuracy")
 plt.grid(True)
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/customer_knn_elbow_plot.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/customer_knn_elbow_plot.png")
 plt.close()
 
 # 6. Eğitim / Test Bölme
@@ -71,7 +71,7 @@ plt.bar(["Train", "Test"], [train_acc, test_acc], color=["skyblue", "lightgreen"
 plt.ylim(0, 1)
 plt.title("Train vs Test Accuracy")
 plt.ylabel("Accuracy")
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/train_test_knn_accuracy_comparison.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/train_test_knn_accuracy_comparison.png")
 plt.close()
 
 # Confusion Matrix
@@ -80,12 +80,12 @@ sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("KNN Confusion Matrix")
-plt.savefig(f"{Config.PROJECT_ROOT}src/models/model_reports/graphics/knn_confusion_matrix.png")
+plt.savefig(Config.PROJECT_ROOT / "src/models/model_reports/graphics/knn_confusion_matrix.png")
 plt.close()
 
 # 9. Model Kaydetme
 pipeline = {"model": knn, "scaler": scaler}
-joblib.dump(pipeline, f"{Config.PROJECT_ROOT}src/models/saved_models/customer_knn_model.pkl")
+joblib.dump(pipeline, Config.PROJECT_ROOT / "src/models/saved_models/customer_knn_model.pkl")
 
 # 10. Yeni Müşteri Tahmini
 new_customer = pd.DataFrame([{
@@ -100,4 +100,4 @@ segment = knn.predict(new_scaled)[0]
 print(f"🎯 Yeni müşteri segmenti: {segment}")
 
 # 11. Segmentli Veriyi Kaydet
-df.to_csv(f"{Config.PROJECT_ROOT}src/models/model_results/customer_knn_segments.csv", index=False)
+df.to_csv(Config.PROJECT_ROOT / "src/models/model_results/customer_knn_segments.csv", index=False)
